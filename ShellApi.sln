@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25123.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShellApi.Lib", "ShellApi.Lib\ShellApi.Lib.csproj", "{1E9FC9BB-A77A-4F92-B1FF-1EFB4D34F37B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShellApi.Driver", "ShellApi.Driver\ShellApi.Driver.csproj", "{6D3FFAB6-FBDC-452E-A688-5AEFBFF54CEA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1E9FC9BB-A77A-4F92-B1FF-1EFB4D34F37B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1E9FC9BB-A77A-4F92-B1FF-1EFB4D34F37B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1E9FC9BB-A77A-4F92-B1FF-1EFB4D34F37B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1E9FC9BB-A77A-4F92-B1FF-1EFB4D34F37B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6D3FFAB6-FBDC-452E-A688-5AEFBFF54CEA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6D3FFAB6-FBDC-452E-A688-5AEFBFF54CEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6D3FFAB6-FBDC-452E-A688-5AEFBFF54CEA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6D3FFAB6-FBDC-452E-A688-5AEFBFF54CEA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
