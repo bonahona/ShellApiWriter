@@ -32,10 +32,6 @@ namespace ShellApi.Lib.Helpers
                 result.BaseClassName = type.BaseType.Name;
             }
 
-            foreach(var interfaceType in type.GetInterfaces()) {
-                result.Interfaces.Add(new Interface { ImplementedTypeName = interfaceType.Name });
-            }
-
             if (type.IsInterface) {
                 result.CustomModifiers = CustomModifiers.Interface;
             } else if (type.IsAbstract) {
@@ -51,15 +47,29 @@ namespace ShellApi.Lib.Helpers
             }
 
             foreach(var property in type.GetProperties()) {
-                result.Properties.Add(DescribeProperty(property, result));
+
+                var describedProperty = DescribeProperty(property, type, result);
+
+                if (describedProperty != null) {
+                    result.Properties.Add(DescribeProperty(property, type, result));
+                }
             }
 
             foreach(var field in type.GetFields()) {
-                result.Properties.Add(DescribeField(field, result));
+
+                var descibedField = DescribeField(field, type, result);
+
+                if (descibedField != null) {
+                    result.Properties.Add(descibedField);
+                }
             }
 
-            foreach (var method in type.GetMethods(BindingFlags.DeclaredOnly)) {
-                result.Methods.Add(DescribeMethod(method, result));
+            foreach (var method in type.GetMethods()) {
+                var describedMethod = DescribeMethod(method, type, result);
+
+                if (describedMethod != null) {
+                    result.Methods.Add(describedMethod);
+                }
             }
 
             return result;
@@ -75,8 +85,12 @@ namespace ShellApi.Lib.Helpers
             return result;
         }
 
-        public static Property DescribeProperty(PropertyInfo property, ProjectClass projectClass)
+        public static Property DescribeProperty(PropertyInfo property, Type type, ProjectClass projectClass)
         {
+            if(property.DeclaringType != type) {
+                return null;
+            }
+
             var result = new Property();
             result.ProjectClass = projectClass;
             result.PropertyName = property.Name;
@@ -104,7 +118,7 @@ namespace ShellApi.Lib.Helpers
             return result;
         }
 
-        public static Property DescribeField(FieldInfo field, ProjectClass projectClass)
+        public static Property DescribeField(FieldInfo field, Type type, ProjectClass projectClass)
         {
             var result = new Property();
             result.ProjectClass = projectClass;
@@ -123,8 +137,12 @@ namespace ShellApi.Lib.Helpers
             return result;
         }
 
-        public static Method DescribeMethod(MethodInfo method, ProjectClass projectClass)
+        public static Method DescribeMethod(MethodInfo method, Type type, ProjectClass projectClass)
         {
+            if(method.DeclaringType != type) {
+                return null;
+            }
+
             var result = new Method();
             result.ProjectClass = projectClass;
             result.MethodName = method.Name;

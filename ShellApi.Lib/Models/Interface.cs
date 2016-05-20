@@ -17,15 +17,16 @@ namespace ShellApi.Lib.Models
 
         public void WriteTo(MySqlConnection connection)
         {
-            throw new NotImplementedException();
+            var command = connection.CreateCommand();
+            command.CommandText = String.Format("INSERT INTO inheritinterface(ProjectClassId, InheritInterfaceId) values({0}, {1})", ProjectClass.Id, ImplementedType.Id);
+            command.ExecuteNonQuery();
+            Id = (int)command.LastInsertedId;
+
         }
 
         public void ReadFrom(MySqlConnection connection)
         {
-            var command = connection.CreateCommand();
-            command.CommandText = String.Format("INSERT INTO inheritinterface(ProjectClassId, InheritInterfaceId) values({0}, {1})", ImplementedType.Id, ProjectClass.Id);
-            command.ExecuteNonQuery();
-            Id = (int)command.LastInsertedId;
+            throw new NotImplementedException();
         }
     }
 }

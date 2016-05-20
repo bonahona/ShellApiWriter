@@ -113,6 +113,7 @@ namespace ShellApi.Lib.Models
                 }
 
                 foreach (var interfaceItem in projectClass.Interfaces) {
+                    result.Interfaces.Add(interfaceItem);
                     result.ProjectClasses.Add(interfaceItem.ImplementedType);
                 }
 
