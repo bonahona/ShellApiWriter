@@ -32,5 +32,7 @@ namespace ShellApi.Driver
         {
             return 2;
         }
+
+        public int MyProperty { get; set; }
     }
 }

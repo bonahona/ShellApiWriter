@@ -143,6 +143,10 @@ namespace ShellApi.Lib.Helpers
                 return null;
             }
 
+            if (method.IsSpecialName) {
+                return null;
+            }
+
             var result = new Method();
             result.ProjectClass = projectClass;
             result.MethodName = method.Name;
